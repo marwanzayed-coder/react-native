@@ -1,18 +1,28 @@
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 
 export default function App() {
+  const [name, setName] = useState("Marwan");
+  const [age, setAge] = useState(15);
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Hello World</Text>
-      </View>
-      <View style={styles.body}>
-        <Text>
-          Lorem ipsum dolor sit <Text style={styles.boldText}>amet</Text>
-        </Text>
-        <Text>Lorem ipsum dolor sit amet</Text>
-        <Text>Lorem ipsum dolor sit amet</Text>
-      </View>
+      <Text>Enter Name:</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="e.g. Ahmed Ali"
+        onChangeText={(e) => setName(e)}
+      />
+      <Text>Enter Age:</Text>
+      <TextInput
+        keyboardType="numeric"
+        style={styles.input}
+        placeholder="e.g. 40"
+        onChangeText={(e) => setAge(e)}
+      />
+      <Text>
+        Name: {name}, Age: {age}
+      </Text>
     </View>
   );
 }
@@ -24,15 +34,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  header: {
-    backgroundColor: "pink",
-    padding: 20,
-  },
-  boldText: {
-    fontWeight: "bold",
-  },
-  body: {
-    backgroundColor: "yellow",
-    padding: 20,
+  input: {
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#555",
+    padding: 4,
+    width: 200,
+    margin: 10,
   },
 });
